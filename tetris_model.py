@@ -23,16 +23,17 @@ class Shape(object):
         ((0, 0), (0, -1), (-1, 0), (1, -1)),
         ((0, 0), (0, -1), (1, 0), (-1, -1))
     )
+    #通过坐标轴旋转的方式来进行物体的真实旋转
 
     def __init__(self, shape=0):
         self.shape = shape
 
     def getRotatedOffsets(self, direction):
         tmpCoords = Shape.shapeCoord[self.shape]
-        if direction == 0 or self.shape == Shape.shapeO:
+        if direction == 0 or self.shape == Shape.shapeO:#为旋转
             return ((x, y) for x, y in tmpCoords)
 
-        if direction == 1:
+        if direction == 1:#第一次顺时针旋转90度
             return ((-y, x) for x, y in tmpCoords)
 
         if direction == 2:
